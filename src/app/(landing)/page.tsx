@@ -1,4 +1,5 @@
 "use client";
+import { ModeToggle } from "@/components/ThemeButton";
 import { Button } from "@/components/ui/button";
 import {
   SignInButton,
@@ -7,7 +8,6 @@ import {
   UserButton,
   useUser,
 } from "@clerk/nextjs";
-import { Link2 } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -15,44 +15,47 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <SignedOut>
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-4">
-            <SignInButton mode="modal">
+      <div className="fixed top-4 right-4">
+        <ModeToggle />
+      </div>
+
+      <div className="flex flex-col items-center justify-center space-y-4">
+        <h1 className="text-4xl">Landing Page</h1>
+        <SignedOut>
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-4">
+              <SignInButton mode="modal">
+                <Button>Sign in(pop-up)</Button>
+              </SignInButton>
+
               <Button>
-                Sign in(pop-up)
+                <Link href="/sign-in">Sign in(redirect)</Link>
               </Button>
-            </SignInButton>
 
+              <Button>
+                <Link href="/sign-up">Sign up(redirect)</Link>
+              </Button>
+            </div>
             <Button>
-              <Link href="/sign-in">
-                Sign in(redirect)
-              </Link>
-            </Button>
-
-            <Button>
-              <Link href="/sign-up">Sign up(redirect)</Link>
+              <Link href="/dashboard">Dashboard</Link>
             </Button>
           </div>
-          <Button>
-            <Link href="/dashboard">Dashboard</Link>
-          </Button>
-        </div>
-      </SignedOut>
+        </SignedOut>
 
-      <SignedIn>
-        <div className="flex items-center gap-4">
-          <span>{user.user?.username || "User"}</span>
-          <UserButton
-            afterSignOutUrl="/"
-            appearance={{
-              elements: {
-                avatarBox: "w-8 h-8",
-              },
-            }}
-          />
-        </div>
-      </SignedIn>
+        <SignedIn>
+          <div className="flex items-center gap-4">
+            <span className="text-sm">{user.user?.username || "User"}</span>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: "w-8 h-8",
+                },
+              }}
+            />
+          </div>
+        </SignedIn>
+      </div>
     </div>
   );
 }

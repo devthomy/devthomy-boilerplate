@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^6.4.1",
     "@clerk/themes": "^2.1.46",
     "@hookform/resolvers": "^3.9.1",
+    "@prisma/client": "^5.22.0",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -48,9 +49,10 @@
     "lucide-react": "^0.460.0",
     "next": "15.0.3",
     "next-themes": "^0.4.3",
-    "react": "19.0.0-rc-66855b96-20241106",
+    "openai": "^4.73.0",
+    "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.2",
     "react-resizable-panels": "^2.1.7",
     "recharts": "^2.13.3",
@@ -67,6 +69,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
+    "prisma": "^5.22.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
