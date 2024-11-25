@@ -1,4 +1,4 @@
-import { Calendar, ChevronDown, ChevronUp, Home, Inbox, MoreHorizontal, Plus, Search, Settings, User2 } from "lucide-react"
+import { ChevronDown, ChevronUp, Home, Inbox, MoreHorizontal, Plus, Search, Settings, User2 } from "lucide-react"
 
 import {
   Sidebar,
@@ -37,21 +37,17 @@ import { ThemeToggle } from "../ThemeButton"
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/dashboard",
     icon: Home,
     badge: "New"
   },
   {
-    title: "Inbox",
-    url: "#",
+    title: "Mail",
+    url: "/dashboard/mail",
     icon: Inbox,
     badge: "24"
   },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar
-  }
+
 ]
 
 const projects = [

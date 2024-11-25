@@ -4,13 +4,10 @@ import { NextResponse } from 'next/server';
 
 export async function POST() {
   try {
-    if (!process.env.RESEND_API_KEY) {
-      throw new Error('Missing Resend API key');
-    }
 
     const { data, error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM || 'Thomy <onboarding@resend.dev>', // Use environment variable
-      to: [process.env.EMAIL_TO || 'thomaseroz@icloud.com'], // Use environment variable
+      from: process.env.EMAIL_FROM || '', // Use environment variable
+      to: [process.env.EMAIL_TO || ''], // Use environment variable
       subject: 'Hello world',
       react: EmailTemplate({ firstName: 'John' }),
     });
