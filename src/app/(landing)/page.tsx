@@ -1,5 +1,5 @@
 "use client";
-import { ModeToggle } from "@/components/ThemeButton";
+import { ThemeToggle } from "@/components/ThemeButton";
 import { Button } from "@/components/ui/button";
 import {
   SignInButton,
@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="fixed top-4 right-4">
-        <ModeToggle />
+        <ThemeToggle />
       </div>
 
       <div className="flex flex-col items-center justify-center space-y-4">
@@ -44,7 +44,9 @@ export default function Home() {
 
         <SignedIn>
           <div className="flex items-center gap-4">
-            <span className="text-sm">{user.user?.username || "User"}</span>
+            <span className="text-sm">
+              {user.user?.username || user.user?.emailAddresses[0].emailAddress}
+            </span>
             <UserButton
               afterSignOutUrl="/"
               appearance={{
@@ -54,6 +56,10 @@ export default function Home() {
               }}
             />
           </div>
+          <Button>
+            <Link href="/dashboard">Dashboard(Protected page)</Link>
+          </Button>
+
         </SignedIn>
       </div>
     </div>
