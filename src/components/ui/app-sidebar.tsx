@@ -1,4 +1,14 @@
-import { ChevronDown, ChevronUp, Home, Inbox, MoreHorizontal, Plus, Search, Settings, User2 } from "lucide-react"
+import {
+  ChevronDown,
+  ChevronUp,
+  CreditCard,
+  Home,
+  Inbox,
+  MoreHorizontal,
+  Plus,
+  Search,
+  Settings,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -19,19 +29,25 @@ import {
   SidebarMenuSubItem,
   SidebarSeparator,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import Username from "./username"
-import Image from "next/image"
-import { ThemeToggle } from "../ThemeButton"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import Username from "./username";
+import Image from "next/image";
+import { ThemeToggle } from "../ThemeButton";
+import { SignOutButton, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 // Menu items
 const items = [
@@ -39,16 +55,20 @@ const items = [
     title: "Home",
     url: "/dashboard",
     icon: Home,
-    badge: "New"
+    badge: "New",
   },
   {
     title: "Mail",
     url: "/dashboard/mail",
     icon: Inbox,
-    badge: "24"
+    badge: "24",
   },
-
-]
+  {
+    title: "Stripe",
+    url: "/dashboard/stripe",
+    icon: CreditCard,
+  },
+];
 
 const projects = [
   {
@@ -58,38 +78,37 @@ const projects = [
     subItems: [
       { title: "Overview", url: "#" },
       { title: "Tasks", url: "#" },
-      { title: "Settings", url: "#" }
-    ]
+      { title: "Settings", url: "#" },
+    ],
   },
   {
-    title: "Project B", 
+    title: "Project B",
     url: "#",
     icon: Settings,
     subItems: [
       { title: "Overview", url: "#" },
-      { title: "Tasks", url: "#" }
-    ]
-  }
-]
+      { title: "Tasks", url: "#" },
+    ],
+  },
+];
 
 export function AppSidebar() {
-
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="flex items-center flex-row justify-between">
-        <Image 
-          src="/logoBlack.png" 
-          alt="Logo" 
-          width={32} 
+        <Image
+          src="/logoBlack.png"
+          alt="Logo"
+          width={32}
           height={32}
-          className="dark:hidden group-data-[collapsible=icon]:hidden" 
+          className="dark:hidden group-data-[collapsible=icon]:hidden"
         />
-        <Image 
-          src="/logoWhite.png" 
-          alt="Logo" 
-          width={32} 
+        <Image
+          src="/logoWhite.png"
+          alt="Logo"
+          width={32}
           height={32}
-          className="hidden dark:block group-data-[collapsible=icon]:hidden" 
+          className="hidden dark:block group-data-[collapsible=icon]:hidden"
         />
 
         <div className="flex items-center flex-row justify-end w-full ">
@@ -181,25 +200,33 @@ export function AppSidebar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
-                  <User2 /> <Username />
+                  <UserButton />
+                  <Username />
                   <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent side="top" className="w-[--radix-popper-anchor-width]">
-                <DropdownMenuItem>
-                  <span>Account</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
+              <DropdownMenuContent
+                side="top"
+                className="w-[--radix-popper-anchor-width]"
+              >
+                <Link href="/dashboard/account" >
+                  <DropdownMenuItem className="cursor-pointer">
+                    <span>Account</span>
+                  </DropdownMenuItem>
+                </Link>
+                <DropdownMenuItem disabled>
                   <span>Billing</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span>Sign out</span>
-                </DropdownMenuItem>
+                <SignOutButton>
+                  <DropdownMenuItem className="cursor-pointer">
+                    <span>Sign out</span>
+                  </DropdownMenuItem>
+                </SignOutButton>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
