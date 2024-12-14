@@ -19,14 +19,14 @@ export default async function Layout({
 
   const user = await getCurrentUser(token);
 
-
   return (
     <UserWrapper initialData={user}>
       <SidebarProvider>
-        <div className="flex">
-          <AppSidebar 
-          />
-          <main className="flex-grow">{children}</main>
+        <div className="flex w-full">
+          <AppSidebar />
+          <main className="flex-grow p-4 w-[calc(100%-240px)]">
+            {children}
+          </main>
         </div>
       </SidebarProvider>
     </UserWrapper>

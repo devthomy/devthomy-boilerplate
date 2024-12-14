@@ -2,6 +2,7 @@ import {
   ChevronDown,
   ChevronUp,
   CreditCard,
+  FileText,
   Home,
   Inbox,
   MoreHorizontal,
@@ -67,6 +68,11 @@ const items = [
     title: "Stripe",
     url: "/dashboard/stripe",
     icon: CreditCard,
+  },
+  {
+    title: "Documentation",
+    url: "/dashboard/documentation",
+    icon: FileText,
   },
 ];
 
