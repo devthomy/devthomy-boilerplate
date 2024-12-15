@@ -6,6 +6,7 @@ export const getCurrentUser = async (token: string) => {
     const response = await api.get<User>('/user', {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
     });
 

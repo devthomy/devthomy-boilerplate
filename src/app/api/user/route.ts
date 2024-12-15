@@ -5,7 +5,7 @@ import { User } from "@/interface/user";
 
 export const GET = async () => {
   const { userId } = await auth();
-        
+  const clerkUser = await currentUser();
   if (!userId) {
     console.log("User ID not found");
     return NextResponse.json({ error: "User ID not found" }, { status: 400 });
@@ -17,7 +17,6 @@ export const GET = async () => {
     });
 
     if (!user) {
-      const clerkUser = await currentUser();
       if (!clerkUser) {
         return NextResponse.json({ error: "Clerk user not found" }, { status: 404 });
       }
