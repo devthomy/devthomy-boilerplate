@@ -8,6 +8,7 @@ import {
   UserButton,
   useUser,
 } from "@clerk/nextjs";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -17,7 +18,7 @@ export default function Header() {
     <header className="flex items-center justify-between p-4">
       <div>
         <Link href="/">
-          <span className="text-xl font-bold">Logo</span>
+          <Image src="logo.svg" alt="Logo" width={50} height={50} />
         </Link>
       </div>
       <div className="flex items-center gap-4">

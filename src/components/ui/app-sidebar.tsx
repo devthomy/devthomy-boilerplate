@@ -103,18 +103,11 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader className="flex items-center flex-row justify-between">
         <Image
-          src="/logoBlack.png"
+          src="/logo.svg"
           alt="Logo"
           width={32}
           height={32}
-          className="dark:hidden group-data-[collapsible=icon]:hidden"
-        />
-        <Image
-          src="/logoWhite.png"
-          alt="Logo"
-          width={32}
-          height={32}
-          className="hidden dark:block group-data-[collapsible=icon]:hidden"
+          className=" group-data-[collapsible=icon]:hidden"
         />
 
         <div className="flex items-center flex-row justify-end w-full ">

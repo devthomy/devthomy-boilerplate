@@ -24,7 +24,7 @@ export default async function Layout({
       <SidebarProvider>
         <div className="flex w-full">
           <AppSidebar />
-          <main className="flex-grow p-4 w-[calc(100%-240px)]">
+          <main className="flex-grow w-[calc(100%-240px)]">
             {children}
           </main>
         </div>

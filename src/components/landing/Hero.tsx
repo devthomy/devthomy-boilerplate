@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Avatar from "./Avatar";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -24,13 +25,15 @@ export function Hero() {
             revenue quickly.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button size="lg" className="gap-2">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
-              </span>
-              Get ShipFast Now
-            </Button>
+            <Link href={"/dashboard"}>
+              <Button size="lg" className="gap-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+                </span>
+                Get ShipFast Now
+              </Button>
+            </Link>
             <div className="text-sm text-green-500 dark:text-green-400">
               $100 off for the first 5520 customers (only 7 left!)
             </div>

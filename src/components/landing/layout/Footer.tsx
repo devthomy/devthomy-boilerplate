@@ -9,7 +9,7 @@ export default function Footer() {
             <Image
               src="/logo.svg"
               alt="CodeFast Logo"
-              width={150}
+              width={50}
               height={50}
               className="mb-4"
             />
@@ -87,19 +87,19 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <hr className="my-8 border-base-300" />
+        <hr className="my-8 border-muted-foreground" />
         <div className="flex justify-between items-center">
-          <div className="text-base-content/80">
-            Built with{" "}
-            <a href="#" className="flex items-center">
+          <div className="flex items-center gap-2 text-base-content/80">
+            Built by{" "}
+            <a href="https://mvplaun.ch" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-primary transition-colors duration-200">
               <Image
-                src="/shipfast-logo.svg"
-                alt="ShipFast Logo"
-                width={100}
+                src="/logo.svg"
+                alt="Logo"
+                width={30}
                 height={30}
                 className="mr-2"
               />
-              ShipFast
+              MVPLaun.ch
             </a>
           </div>
           <div className="text-base-content/80">
