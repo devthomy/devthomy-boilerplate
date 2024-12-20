@@ -1,67 +1,23 @@
 "use client";
-import { ThemeToggle } from "@/components/ThemeButton";
-import { Button } from "@/components/ui/button";
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
-import Link from "next/link";
+import Footer from "@/components/landing/layout/Footer";
+import Header from "@/components/landing/layout/Header";
+import { Hero } from "@/components/landing/Hero";
+import { Suspense } from "react";
 
 export default function Home() {
-  const user = useUser();
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="fixed top-4 right-4">
-        <ThemeToggle />
-      </div>
+    <>
+    <Suspense>
+      <Header />
+      </Suspense>
+      <main>
+        <Hero />
 
-      <div className="flex flex-col items-center justify-center space-y-4">
-        <h1 className="text-4xl">Landing Page</h1>
-        <SignedOut>
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-4">
-              <SignInButton mode="modal">
-                <Button>Sign in(pop-up)</Button>
-              </SignInButton>
 
-              <Button>
-                <Link href="/sign-in">Sign in(redirect)</Link>
-              </Button>
 
-              <Button>
-                <Link href="/sign-up">Sign up(redirect)</Link>
-              </Button>
-            </div>
-            <Button>
-              <Link href="/dashboard">Dashboard</Link>
-            </Button>
-          </div>
-        </SignedOut>
-
-        <SignedIn>
-          <div className="flex items-center gap-4">
-            <span className="text-sm">
-              {user.user?.username || user.user?.emailAddresses[0].emailAddress}
-            </span>
-            <UserButton
-              afterSignOutUrl="/"
-              appearance={{
-                elements: {
-                  avatarBox: "w-8 h-8",
-                },
-              }}
-            />
-          </div>
-          <Button>
-            <Link href="/dashboard">Dashboard(Protected page)</Link>
-          </Button>
-
-        </SignedIn>
-      </div>
-    </div>
+      </main>
+      <Footer />
+    </>
   );
 }
