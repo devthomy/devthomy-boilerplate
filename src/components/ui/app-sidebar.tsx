@@ -198,7 +198,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton>
+                <SidebarMenuButton className="h-10">
                   <UserButton />
                   <Username />
                   <ChevronUp className="ml-auto" />

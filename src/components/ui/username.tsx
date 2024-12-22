@@ -5,16 +5,13 @@ export default function Username() {
     const { user } = useUser()
     
     const displayName = () => {
-        const email = user?.emailAddresses[0].emailAddress
-        if (!email) return ''
+        if (!user) return ''
         
-        if (user?.username) return user.username
+        if (user.username) return user.username
         
-        if (email.length > 20) {
-            return email.substring(0, 23) + '...'
-        }
+        if (user.firstName) return user.firstName
         
-        return email
+        return ''
     }
 
     return (
