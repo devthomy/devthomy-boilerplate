@@ -2,6 +2,9 @@ export interface User {
     id: string;
     userId: string;
     email: string;
+    emailVerified?: Date | null;
+    image?: string | null;
+    name?: string | null;
     createdAt: Date;
     updatedAt: Date;
     subscription?: UserSubscription;

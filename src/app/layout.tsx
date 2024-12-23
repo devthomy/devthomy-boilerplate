@@ -1,8 +1,8 @@
-import { ClerkProvider } from '@clerk/nextjs'
-import { dark } from '@clerk/themes'
+'use client'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Toaster } from '@/components/ui/toaster'
+import { SessionProvider } from 'next-auth/react'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,21 +14,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body suppressHydrationWarning>
-        <ClerkProvider
-          appearance={{
-            baseTheme: dark,
-          }}
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+          <SessionProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
           >
-            <main>{children}</main>
-          </ThemeProvider>
+              <main>{children}</main>
+            </ThemeProvider>
+          </SessionProvider>
           <Toaster />
-        </ClerkProvider>
       </body>
     </html>
   )

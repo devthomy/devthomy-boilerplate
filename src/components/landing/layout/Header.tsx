@@ -1,18 +1,12 @@
 "use client";
 import { ThemeToggle } from "@/components/ThemeButton";
 import { Button } from "@/components/ui/button";
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Header() {
-  const user = useUser();
+  const { data: session } = useSession();
 
   return (
     <header className="flex items-center justify-between p-4">
@@ -22,11 +16,8 @@ export default function Header() {
         </Link>
       </div>
       <div className="flex items-center gap-4">
-        <SignedOut>
+        {!session && (
           <div className="flex gap-4">
-            <SignInButton mode="modal">
-              <Button>Sign in(popup)</Button>
-            </SignInButton>
             <Button>
               <Link href="/sign-in">Sign in</Link>
             </Button>
@@ -34,23 +25,18 @@ export default function Header() {
               <Link href="/sign-up">Sign up</Link>
             </Button>
           </div>
-        </SignedOut>
+        )}
 
-        <SignedIn>
+        {session && (
           <div className="flex items-center gap-4">
             <span className="text-sm">
-              {user.user?.username || user.user?.emailAddresses[0].emailAddress}
+              {session.user?.name || session.user?.email}
             </span>
-            <UserButton
-              afterSignOutUrl="/"
-              appearance={{
-                elements: {
-                  avatarBox: "w-8 h-8",
-                },
-              }}
-            />
+            <Button onClick={() => signOut()}>
+              Sign out
+            </Button>
           </div>
-        </SignedIn>
+        )}
         <ThemeToggle />
       </div>
     </header>

@@ -47,8 +47,8 @@ import {
 import Username from "./username";
 import Image from "next/image";
 import { ThemeToggle } from "../ThemeButton";
-import { SignOutButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 // Menu items
 const items = [
@@ -199,7 +199,6 @@ export function AppSidebar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton className="h-10">
-                  <UserButton />
                   <Username />
                   <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
@@ -216,11 +215,7 @@ export function AppSidebar() {
                 <DropdownMenuItem disabled>
                   <span>Billing</span>
                 </DropdownMenuItem>
-                <SignOutButton>
-                  <DropdownMenuItem className="cursor-pointer">
-                    <span>Sign out</span>
-                  </DropdownMenuItem>
-                </SignOutButton>
+                <button onClick={() => signOut()}>Sign Out</button>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>

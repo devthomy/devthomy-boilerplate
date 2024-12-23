@@ -1,15 +1,17 @@
 'use client'
-import { useUser } from "@clerk/nextjs";
+import { useSession } from "next-auth/react";
 
 export default function Username() {
-    const { user } = useUser()
+    const { data: session } = useSession();
+    const user = session?.user;
     
+
     const displayName = () => {
         if (!user) return ''
         
-        if (user.username) return user.username
+        if (user.name) return user.name
         
-        if (user.firstName) return user.firstName
+        if (user.email) return user.email
         
         return ''
     }
